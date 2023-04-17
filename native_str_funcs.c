@@ -22,7 +22,7 @@ int _strlen(const char *str)
  *
  * Return: pointer to destionation string
  */
-char * _strcpy(char *dest, const char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	int i = 0;
 
@@ -30,5 +30,44 @@ char * _strcpy(char *dest, const char *src)
 		i++;
 	dest[i] = '\0';
 
-	return (dest);	
+	return (dest);
+}
+
+/**
+ * _strconcat - appends the src string to the dest string
+ * @dest: string to append to
+ * @src: string to append
+ *
+ * Return: dest
+ */
+char *_strconcat(char *dest, const char *src)
+{
+	int i, j;
+
+	for (i = 0; dest[i]; i++)
+		;
+	for (j = 0; src[j]; j++)
+		dest[i + j] = src[j];
+	dest[i + j] = '\0';
+
+	return (dest);
+}
+
+/**
+ * begins_with - checks if str starts with a substring
+ * @str: string to search
+ * @substr: string to find
+ *
+ * Return: str || NULL
+ */
+char *begins_with(const char *str, const char *substr)
+{
+
+	while (*substr)
+	{
+		if (*substr++ != *str++)
+			return (NULL);
+	}
+
+	return ((char *) str);
 }
