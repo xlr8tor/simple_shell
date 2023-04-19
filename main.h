@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 #define DELIM " \n"
 
@@ -24,5 +26,9 @@ char *read_line(void);
 
 /* PARSE ARGUMENTS */
 char **parse_args(char *line);
+
+/* EXECUTE COMMAND */
+int launch_cmd(char **argv);
+int execcmd(char **argv);
 
 #endif /* MAIN_H */

@@ -1,14 +1,17 @@
 #include "main.h"
-
+/**
+ * parse_args - tokenize arguments supplied to stdin
+ * @line: sequence of characters inputed in stdin
+ *
+ * Return: an array of arguments from the input string
+ */
 char **parse_args(char *line)
 {
-	char *line_cpy = NULL, *token;
+	char *line_cpy = NULL, *token, **argv;
 	int i, len = 0, num_tokens = 0;
-	char **argv;
 
 	len = _strlen(line);
 	line_cpy = malloc(sizeof(char) * len);
-
 	if (!line_cpy)
 	{
 		perror("tsh: memory allocation error");
@@ -16,7 +19,6 @@ char **parse_args(char *line)
 	}
 
 	_strcpy(line_cpy, line);
-
 	token = strtok(line, DELIM);
 
 	while (token != NULL)
@@ -26,8 +28,7 @@ char **parse_args(char *line)
 	}
 
 	num_tokens++;
-
-	argv = malloc(sizeof(char *) *num_tokens);
+	argv = malloc(sizeof(char *) * num_tokens);
 	if (!argv)
 	{
 		free(line_cpy);
@@ -43,6 +44,5 @@ char **parse_args(char *line)
 		token = strtok(NULL, DELIM);
 	}
 	argv[i] = '\0';
-
 	return (argv);
 }

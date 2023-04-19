@@ -10,7 +10,8 @@ char *read_line(void)
 	size_t linecap = 0;
 	ssize_t linelen;
 
-	if ((linelen = getline(&line, &linecap, stdin) == -1))
+	linelen = getline(&line, &linecap, stdin);
+	if (linelen == -1)
 		exit(EXIT_SUCCESS);
 
 	return (line);
