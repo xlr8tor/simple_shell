@@ -9,11 +9,16 @@ int launch_cmd(char **argv)
 {
 	pid_t pid;
 	int status;
+	char *command;
+
+	command = get_location(argv[0]);
+	if (!command)
+		return (1);
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(command, argv, NULL) == -1)
 			perror("Error:");
 		exit(EXIT_FAILURE);
 	}

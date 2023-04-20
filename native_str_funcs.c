@@ -71,3 +71,32 @@ char *begins_with(const char *str, const char *substr)
 
 	return ((char *) str);
 }
+
+/**
+ * _strdup - duplicates a given string
+ * @str: string to duplicate
+ *
+ * Return: pointer to new string
+ */
+char *_strdup(const char *str)
+{
+	int i, len;
+	char *ptr;
+
+	if (!str)
+		return (NULL);
+	len = _strlen(str);
+
+	ptr = malloc(sizeof(char) * (len + 1));
+
+	if (!ptr)
+		return (NULL);
+
+	for (i = 0; str[i]; i++)
+	{
+		ptr[i] = str[i];
+	}
+	ptr[i] = '\0';
+
+	return (ptr);
+}

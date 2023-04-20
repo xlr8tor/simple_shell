@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 
 #define DELIM " \n"
 
@@ -17,6 +18,7 @@ void lsh_loop(void);
 int _strlen(const char *str);
 char *_strcpy(char *dest, const char *src);
 char *_strconcat(char *dest, const char *src);
+char *_strdup(const char *str);
 char *begins_with(const char *str, const char *substr);
 int _putchar(char c);
 void _puts(const char *str);
@@ -30,5 +32,8 @@ char **parse_args(char *line);
 /* EXECUTE COMMAND */
 int launch_cmd(char **argv);
 int execcmd(char **argv);
+
+/* GET FULL PATH */
+char *get_location(char *command);
 
 #endif /* MAIN_H */
