@@ -13,7 +13,10 @@ int launch_cmd(char **argv)
 
 	command = get_location(argv[0]);
 	if (!command)
-		return (1);
+	{
+		perror("Error:");
+		return (EXIT_FAILURE);
+	}
 
 	pid = fork();
 	if (pid == 0)
@@ -44,8 +47,19 @@ int launch_cmd(char **argv)
  */
 int execcmd(char **argv)
 {
+	int i;
+	builtin_t builtin_list[] = {
+		{"exit", _myexit},
+		{"\0", NULL}
+	};
+
 	if (argv[0] == NULL)
 		return (1);
 
+	for (i = 0; builtin_list[i].fn != NULL; i++)
+	{
+		if (strcmp(argv[0], builtin_list[i].cmd) == 0)
+			return (builtin_list[i].fn(argv));
+	}
 	return (launch_cmd(argv));
 }

@@ -11,8 +11,27 @@
 
 #define DELIM " \n"
 
+/**
+ * struct builtin - user defined type
+ * @cmd: builtin command name
+ * @fn: function to execute
+ */
+struct builtin
+{
+	char *cmd;
+	int (*fn)(char **);
+};
+
+/**
+ * builtin_t - typedef for struct builtin
+ */
+typedef struct builtin builtin_t;
+
 /* MAIN LOOP FUNCTION */
 void lsh_loop(void);
+
+/* BUILTIN FUNCTIONS */
+int _myexit(char **argv);
 
 /* STRING FUNCTIONS */
 int _strlen(const char *str);
