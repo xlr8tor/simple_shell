@@ -58,7 +58,7 @@ int execcmd(char **argv)
 
 	for (i = 0; builtin_list[i].fn != NULL; i++)
 	{
-		if (strcmp(argv[0], builtin_list[i].cmd) == 0)
+		if (_strcmp(argv[0], builtin_list[i].cmd) == 0)
 			return (builtin_list[i].fn(argv));
 	}
 	return (launch_cmd(argv));

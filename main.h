@@ -41,6 +41,7 @@ char *_strdup(const char *str);
 char *begins_with(const char *str, const char *substr);
 int _putchar(char c);
 void _puts(const char *str);
+int _strcmp(char *s1, char *s2);
 
 /* READ LINE FUNCTIONS */
 char *read_line(void);
@@ -54,5 +55,8 @@ int execcmd(char **argv);
 
 /* GET FULL PATH */
 char *get_location(char *command);
+
+/* CONVERT CHAR POINTER TO INT */
+int _atoi(char *s);
 
 #endif /* MAIN_H */
