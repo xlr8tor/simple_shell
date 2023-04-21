@@ -63,4 +63,7 @@ char *get_location(char *command);
 /* CONVERT CHAR POINTER TO INT */
 int _atoi(char *s);
 
+/* GETLINE FUNCTIONS */
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+
 #endif /* MAIN_H */
