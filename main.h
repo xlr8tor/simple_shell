@@ -10,6 +10,9 @@
 #include <sys/stat.h>
 
 #define DELIM " \n"
+#define UNUSED(x) ((void) (x))
+
+extern char **environ;
 
 /**
  * struct builtin - user defined type
@@ -32,6 +35,7 @@ void lsh_loop(void);
 
 /* BUILTIN FUNCTIONS */
 int _myexit(char **argv);
+int _printenv(char **argv);
 
 /* STRING FUNCTIONS */
 int _strlen(const char *str);

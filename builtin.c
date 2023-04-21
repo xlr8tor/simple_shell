@@ -12,3 +12,24 @@ int _myexit(char **argv)
 	else
 		return (0);
 }
+
+/**
+ * _printenv - prints shell environment variables
+ * @argv: argument vector
+ *
+ * Return: exit status of program
+ */
+int _printenv(char **argv)
+{
+	int i;
+
+	UNUSED(argv);
+
+	for (i = 0; environ[i]; i++)
+	{
+		_puts(environ[i]);
+		_putchar('\n');
+	}
+
+	return (1);
+}
