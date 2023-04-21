@@ -50,6 +50,7 @@ int execcmd(char **argv)
 	int i;
 	builtin_t builtin_list[] = {
 		{"exit", _myexit},
+		{"env", _printenv},
 		{"\0", NULL}
 	};
 
