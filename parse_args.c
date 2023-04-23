@@ -24,7 +24,7 @@ char **parse_args(char *line)
 	while (token != NULL)
 	{
 		num_tokens++;
-		token = strtok(NULL, DELIM);
+		token = _strtok(NULL, DELIM);
 	}
 
 	num_tokens++;
@@ -35,13 +35,13 @@ char **parse_args(char *line)
 		perror("tsh: memory allocation error");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line_cpy, DELIM);
+	token = _strtok(line_cpy, DELIM);
 
 	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = malloc(sizeof(char) * _strlen(token));
 		_strcpy(argv[i], token);
-		token = strtok(NULL, DELIM);
+		token = _strtok(NULL, DELIM);
 	}
 	argv[i] = '\0';
 	return (argv);
