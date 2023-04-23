@@ -66,4 +66,7 @@ int _atoi(char *s);
 /* TOKENIZE STRING */
 char *_strtok(char *str, const char *delim);
 
+/* GETLINE FUNCTIONS */
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+
 #endif /* MAIN_H */
