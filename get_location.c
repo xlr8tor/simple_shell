@@ -17,7 +17,7 @@ char *get_location(char *command)
 	{
 		cmd_len = _strlen(command);
 		path_cpy = _strdup(path);
-		token = strtok(path_cpy, ":");
+		token = _strtok(path_cpy, ":");
 
 		while (token != NULL)
 		{
@@ -38,7 +38,7 @@ char *get_location(char *command)
 			else
 			{
 				free(file_path);
-				token = strtok(NULL, ":");
+				token = _strtok(NULL, ":");
 			}
 		}
 		free(path_cpy);
