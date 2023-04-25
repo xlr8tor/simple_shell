@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _getenv - get the environment variable for a property name
  * @path: name of the property
