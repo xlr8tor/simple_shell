@@ -8,7 +8,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <stddef.h>
 
 #define DELIM " \n"
 #define UNUSED(x) ((void) (x))
@@ -37,7 +36,6 @@ void lsh_loop(void);
 /* BUILTIN FUNCTIONS */
 int _myexit(char **argv);
 int _printenv(char **argv);
-int _mycd(char **argv);
 
 /* STRING FUNCTIONS */
 int _strlen(const char *str);
@@ -48,7 +46,6 @@ char *begins_with(const char *str, const char *substr);
 int _putchar(char c);
 void _puts(const char *str);
 int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* READ LINE FUNCTIONS */
 char *read_line(void);
@@ -66,13 +63,14 @@ char *get_location(char *command);
 /* CONVERT CHAR POINTER TO INT */
 int _atoi(char *s);
 
+<<<<<<< HEAD
 /* TOKENIZE STRING */
 char *_strtok(char *str, const char *delim);
 
+||||||| 604807a
+=======
 /* GETLINE FUNCTIONS */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
-/* GET ENVIRONMENT VARIABLE */
-char *_getenv(const char *path);
-
+>>>>>>> main
 #endif /* MAIN_H */
