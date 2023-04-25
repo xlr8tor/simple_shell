@@ -74,7 +74,5 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 /* GET ENVIRONMENT VARIABLE */
 char *_getenv(const char *path);
-int _setenv(char **args, char __attribute__((__unused__)) **front);
-
 
 #endif /* MAIN_H */
