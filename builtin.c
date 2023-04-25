@@ -78,3 +78,103 @@ int _mycd(char **argv)
 
 	return (1);
 }
+
+/**
+ * _setenv - Initialize a new environment variable, or modify an existing one.
+ * @name: The environment variable name to be initialized or modified.
+ * @value: The value of the environment variable.
+ * @overwrite: Specifies if the existing environmental variable should be
+ *             overwritten or not (If non-zero, it overwrites & if 0 otherwise)
+ *
+ * Return: -1 on error and 0 otherwise.
+ */
+int _setenv(const char *name, const char *value, int overwrite)
+{
+	int namelen = _strlen(name), vallen = _strlen(value);
+	int i, var_len;
+	char *newvar;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		if (_strncmp(environ[i], name, namelen) == 0 && environ[i][namelen] == '=')
+		{
+			if (!overwrite)
+			return (-1);
+		}
+		else
+		{
+			var_len = namelen + vallen + 1;
+			newvar = malloc(var_len);
+			_strncpy(newvar, name, namelen);
+			newvar[namelen] = '=';
+			_strncpy(newvar + namelen + 1, value, vallen);
+			newvar[var_len - 1] = '\0';
+			environ[i] = newvar;
+
+			free(newvar);
+
+			return (0);
+		}
+	}
+
+	var_len = namelen + vallen + 1;
+	newvar = malloc(var_len);
+	_strncpy(newvar, name, namelen);
+	newvar[namelen] = '=';
+	_strncpy(newvar + namelen + 1, value, vallen);
+	newvar[var_len - 1] = '\0';
+	environ[i] = newvar;
+	environ[i + 1] = NULL;
+
+	free(newvar);
+
+	return (0);
+}
+
+/**
+ * _unsetenv - Remove an environment variable.
+ * @name: The environmental variable to be removed.
+ *
+ * Return: 0 on success, -1 otherwise.
+ */
+int _unsetenv(const char *name)
+{
+	int i, j, k;
+	char **new_env;
+
+	if (name == NULL || strlen(name) == 0)
+		return (-1);
+
+	i = 0;
+	while (environ[i] != NULL)
+	{
+		j = 0;
+		while (name[j] != '\0' && name[j] == environ[i][j])
+			j++;
+
+		if (name[j] == '\0' && environ[i][j] == '=')
+			break;
+		i++;
+	}
+
+	if (environ[i] == NULL)
+		return (-1);
+
+	new_env = malloc(sizeof(char *) * (environ_size + 1));
+	if (new_env == NULL)
+		return (-1);
+
+	j = 0;
+	for (k = 0; k < environ_size; k++)
+	{
+		if (k != i)
+			new_env[j++] = environ[k];
+	}
+	new_env[j] = NULL;
+
+	environ = new_env;
+	environ_size = j;
+	free(new_env);
+
+	return (0);
+}

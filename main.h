@@ -14,6 +14,7 @@
 #define UNUSED(x) ((void) (x))
 
 extern char **environ;
+int environ_size;
 
 /**
  * struct builtin - user defined type
@@ -49,6 +50,8 @@ int _putchar(char c);
 void _puts(const char *str);
 int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
+char *_strcat(char *dest, const char *src);
+char *_strncpy(char *dest, const char *src, int n);
 
 /* READ LINE FUNCTIONS */
 char *read_line(void);
@@ -74,6 +77,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 /* GET ENVIRONMENT VARIABLE */
 char *_getenv(const char *path);
-
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
 
 #endif /* MAIN_H */
