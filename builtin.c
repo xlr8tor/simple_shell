@@ -140,7 +140,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 int _unsetenv(const char *name)
 {
 	int i, j, k;
-	int environ_size = 0;
 	char **new_env;
 
 	if (name == NULL || _strlen(name) == 0)
