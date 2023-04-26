@@ -19,7 +19,7 @@ char **parse_args(char *line)
 	}
 
 	_strcpy(line_cpy, line);
-	token = strtok(line, DELIM);
+	token = _strtok(line, DELIM);
 
 	while (token != NULL)
 	{

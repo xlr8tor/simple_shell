@@ -142,7 +142,7 @@ int _unsetenv(const char *name)
 	int i, j, k;
 	char **new_env;
 
-	if (name == NULL || strlen(name) == 0)
+	if (name == NULL || _strlen(name) == 0)
 		return (-1);
 
 	i = 0;
