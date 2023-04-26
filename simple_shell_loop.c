@@ -12,6 +12,8 @@ void lsh_loop(char *prgname)
 	do {
 		if (isatty(0))
 			_puts("#cisfun$ ");
+		fflush(stdout);
+
 		line = read_line();
 		args = parse_args(line);
 		status = execcmd(args, prgname);
