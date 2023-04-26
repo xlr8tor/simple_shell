@@ -2,10 +2,10 @@
 /**
  * launch_cmd - creates a new process and executes a command
  * @argv: argument vector
- *
+ * @prgname: name of program
  * Return: 1 || -1
  */
-int launch_cmd(char **argv)
+int launch_cmd(char **argv, char *prgname)
 {
 	pid_t pid;
 	int status;
@@ -14,10 +14,20 @@ int launch_cmd(char **argv)
 	command = get_location(argv[0]);
 	if (!command)
 	{
-		perror("Error:");
+		if (isatty(0))
+		{
+			_putserr(prgname);
+			perror(":");
+		}
+		else
+		{
+			_putserr(prgname);
+			_putserr(": 1: ");
+			_putserr(argv[0]);
+			_putserr(": not found\n");
+		}
 		return (EXIT_FAILURE);
 	}
-
 	pid = fork();
 	if (pid == 0)
 	{
@@ -35,7 +45,6 @@ int launch_cmd(char **argv)
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-
 	free(command);
 	return (1);
 }
@@ -43,10 +52,10 @@ int launch_cmd(char **argv)
 /**
  * execcmd - executes the command inputed into stdin
  * @argv: a pointer to array of string arguments
- *
+ * @prgname: name of program
  * Return: 1 on SUCCESS || -1 on FAILURE
  */
-int execcmd(char **argv)
+int execcmd(char **argv, char *prgname)
 {
 	int i;
 	builtin_t builtin_list[] = {
@@ -64,5 +73,5 @@ int execcmd(char **argv)
 		if (_strcmp(argv[0], builtin_list[i].cmd) == 0)
 			return (builtin_list[i].fn(argv));
 	}
-	return (launch_cmd(argv));
+	return (launch_cmd(argv, prgname));
 }

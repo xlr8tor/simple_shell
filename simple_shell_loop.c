@@ -1,22 +1,21 @@
 #include "main.h"
 /**
  * lsh_loop - main shell loop
+ * @prgname: name of program
  */
-void lsh_loop(void)
+void lsh_loop(char *prgname)
 {
 	char *line;
 	char **args;
-	int status, i;
+	int status;
 
 	do {
 		_puts("#cisfun: ");
 		line = read_line();
 		args = parse_args(line);
-		status = execcmd(args);
+		status = execcmd(args, prgname);
 
 		free(line);
-		for (i = 0; args[i] != NULL; i++)
-			free(args[i]);
 		free(args);
 	} while (status);
 }

@@ -8,9 +8,9 @@
  */
 int main(int argc, char **argv)
 {
-	(void) (argc);
-	(void) (argv);
+	char *prgname = argv[0];
 
-	lsh_loop();
+	(void) (argc);
+	lsh_loop(prgname);
 	return (EXIT_SUCCESS);
 }

@@ -32,7 +32,7 @@ struct builtin
 typedef struct builtin builtin_t;
 
 /* MAIN LOOP FUNCTION */
-void lsh_loop(void);
+void lsh_loop(char *prgname);
 
 /* BUILTIN FUNCTIONS */
 int _myexit(char **argv);
@@ -59,8 +59,8 @@ char *read_line(void);
 char **parse_args(char *line);
 
 /* EXECUTE COMMAND */
-int launch_cmd(char **argv);
-int execcmd(char **argv);
+int launch_cmd(char **argv, char *prgname);
+int execcmd(char **argv, char *prgname);
 
 /* GET FULL PATH */
 char *get_location(char *command);
@@ -78,5 +78,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *_getenv(const char *path);
 int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
+
+/* PRINT ERRORS */
+int _puterrchar(char c);
+void _putserr(const char *str);
 
 #endif /* MAIN_H */
