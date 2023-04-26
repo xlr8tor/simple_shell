@@ -14,7 +14,6 @@
 #define UNUSED(x) ((void) (x))
 
 extern char **environ;
-int environ_size;
 
 /**
  * struct builtin - user defined type
