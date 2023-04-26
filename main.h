@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stddef.h>
+#include <signal.h>
 
 #define DELIM " \n"
 #define UNUSED(x) ((void) (x))
