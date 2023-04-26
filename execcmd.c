@@ -17,7 +17,7 @@ int launch_cmd(char **argv, char *prgname)
 		if (isatty(0))
 		{
 			_putserr(prgname);
-			perror(":");
+			_putserr(": No such file or directory\n");
 		}
 		else
 		{

@@ -10,7 +10,8 @@ void lsh_loop(char *prgname)
 	int status;
 
 	do {
-		_puts("#cisfun: ");
+		if (isatty(0))
+			_puts("#cisfun: ");
 		line = read_line();
 		args = parse_args(line);
 		status = execcmd(args, prgname);
