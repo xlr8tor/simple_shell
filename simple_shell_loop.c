@@ -24,7 +24,4 @@ void lsh_loop(char *prgname)
 		}
 		free(args);
 	} while (status);
-
-	if (isatty(0))
-		_putchar('\n');
 }
