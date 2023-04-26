@@ -10,6 +10,8 @@ char **parse_args(char *line)
 	char *line_cpy = NULL, *token, **argv;
 	int i, len = 0, num_tokens = 0;
 
+	while (*line == ' ' || *line == '\t')
+		line++;
 	len = _strlen(line);
 	line_cpy = malloc(sizeof(char) * len + 1);
 	if (!line_cpy)
@@ -20,13 +22,11 @@ char **parse_args(char *line)
 
 	_strcpy(line_cpy, line);
 	token = _strtok(line, DELIM);
-
 	while (token != NULL)
 	{
 		num_tokens++;
 		token = _strtok(NULL, DELIM);
 	}
-
 	num_tokens++;
 	argv = malloc(sizeof(char *) * num_tokens);
 	if (!argv)
