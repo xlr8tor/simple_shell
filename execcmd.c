@@ -21,7 +21,7 @@ int launch_cmd(char **argv)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(command, argv, environ) == -1)
+		if (execve(command, argv, NULL) == -1)
 			perror("Error:");
 		exit(EXIT_FAILURE);
 	}
@@ -36,6 +36,7 @@ int launch_cmd(char **argv)
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 
+	free(command);
 	return (1);
 }
 

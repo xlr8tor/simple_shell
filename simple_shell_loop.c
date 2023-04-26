@@ -6,7 +6,7 @@ void lsh_loop(void)
 {
 	char *line;
 	char **args;
-	int status;
+	int status, i;
 
 	do {
 		_puts("#cisfun: ");
@@ -15,6 +15,8 @@ void lsh_loop(void)
 		status = execcmd(args);
 
 		free(line);
+		for (i = 0; args[i] != NULL; i++)
+			free(args[i]);
 		free(args);
 	} while (status);
 }
