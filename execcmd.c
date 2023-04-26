@@ -21,7 +21,7 @@ int launch_cmd(char **argv)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(command, argv, NULL) == -1)
+		if (execve(command, argv, environ) == -1)
 			perror("Error:");
 		exit(EXIT_FAILURE);
 	}
