@@ -7,7 +7,7 @@ void lsh_loop(char *prgname)
 {
 	char *line;
 	char **args;
-	int status, i;
+	int status;
 
 	do {
 		if (isatty(0))
@@ -19,11 +19,6 @@ void lsh_loop(char *prgname)
 		status = execcmd(args, prgname);
 
 		free(line);
-		if (isatty(0))
-		{
-			for (i = 0; args[i] != NULL; i++)
-				free(args[i]);
-		}
 		free(args);
 	} while (status);
 }
