@@ -28,6 +28,7 @@ char **parse_args(char *line)
 		token = _strtok(NULL, DELIM);
 	}
 	num_tokens++;
+	printf("number of tokens: %d\n", num_tokens);
 	argv = malloc(sizeof(char *) * num_tokens);
 	if (!argv)
 	{

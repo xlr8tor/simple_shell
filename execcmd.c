@@ -43,9 +43,9 @@ int launch_cmd(char **argv, char *prgname)
 	{
 		do {
 			waitpid(pid, &status, WUNTRACED);
+			free(command);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	free(command);
 	return (1);
 }
 

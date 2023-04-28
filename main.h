@@ -9,8 +9,11 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <signal.h>
+#include <ctype.h>
+#include <string.h>
 
-#define DELIM " \n"
+#define DELIM " \t\n"
+#define MAX_TOKENS 100
 #define UNUSED(x) ((void) (x))
 
 extern char **environ;
@@ -84,4 +87,8 @@ int _unsetenv(const char *name);
 int _puterrchar(char c);
 void _putserr(const char *str);
 
+char *trim_input(char *line);
+char **split_string(const char *string, const char *delimiter, int *num_tokens);
+
 #endif /* MAIN_H */
+

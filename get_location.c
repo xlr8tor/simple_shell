@@ -42,8 +42,10 @@ char *get_location(char *command)
 			}
 		}
 		free(path_cpy);
+		file_path = NULL;
 		if (stat(command, &buffer) == 0)
-			return (command);
+			file_path = _strdup(command);
+		return (file_path);
 	}
 	return (NULL);
 }
